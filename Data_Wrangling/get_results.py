@@ -53,8 +53,21 @@ del bayarea_zip['RegionID'], bayarea_zip['SizeRank'], bayarea_zip['State']
 # Set the index to be the zip codes
 bayarea_zip = bayarea_zip.set_index('RegionName')
 
-# Create a new Data Frame that only contain columns City:CountyName
+
+# Create a new Data Frame that only contain columns City:CountyName and export
+# to zip_id.csv to possible use for later analysis
 zip_id = bayarea_zip.loc[:,'City':'CountyName']
+zip_id.to_csv('zip_id.csv')
+
 
 # Create a new Data Frame that only contain the price by month
-by_zip = bayarea_zip.loc[:,'1996-04':]
+zip_dates = bayarea_zip.loc[:,'1996-04':]
+
+# Convert the column names in zip_dates to datetime objects
+zip_dates.columns = pd.to_datetime(zip_dates.columns)
+
+# Pivot by_zip to swap index and column names
+by_zip = zip_dates.transpose()
+
+# Export zip_by_date to a csv file
+by_zip.to_csv('by_zip.csv')
