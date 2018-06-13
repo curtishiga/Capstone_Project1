@@ -1,17 +1,18 @@
 ### Data was obtained from via Zillow Research Data's Home Values
 ### (https://www.zillow.com/research/data/)
-### This represents the median estimated home value across a given region. I've
-### pulled the data for all homes (SFR, condos/co-op) by zip code and saved it
-### as 'Zip_Zhvi_AllHomes.csv'
+### This represents the median estimated home value across a given 
+### region. I've pulled the data for all homes (SFR, condos/co-op) by
+### zip code and saved it as 'Zip_Zhvi_AllHomes.csv'
 
 # Import necessary libraries
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 
 # Read the downloaded .csv file into a Pandas DataFrame
-df = pd.read_csv('Zip_Zhvi_AllHomes.csv')
+df = pd.read_csv('Zip_Zhvi_AllHomes.csv', parse_dates=True)
 
 # RegionName is used to list which zip code for each region
 # Extract only the zip codes in 'CA' to narrow the list and reduce any
@@ -48,3 +49,12 @@ bayarea_zip = ca_zip[ca_zip['CountyName'].isin(counties)]
 
 ### Remove unnecessary columns like RegionID, SizeRank, State
 del bayarea_zip['RegionID'], bayarea_zip['SizeRank'], bayarea_zip['State']
+
+# Set the index to be the zip codes
+bayarea_zip = bayarea_zip.set_index('RegionName')
+
+# Create a new Data Frame that only contain columns City:CountyName
+zip_id = bayarea_zip.loc[:,'City':'CountyName']
+
+# Create a new Data Frame that only contain the price by month
+by_zip = bayarea_zip.loc[:,'1996-04':]
