@@ -67,9 +67,10 @@ zip_dates.columns = pd.to_datetime(zip_dates.columns)
 # Pivot by_zip to swap index and column names
 by_zip = zip_dates.transpose()
 
-# Fill NA values with 0 since its likely that there was no data to report for
-# developing areas
-by_zip.fillna(0)
+# NaN values seem to be found where areas were being developed and likely there
+# was no data to report.
+# Leave them as such to keep from skewing the data with huge outliers of '0'
+# by_zip.fillna(0)
 
 # Export zip_by_date to a csv file
 by_zip.to_csv('by_zip.csv')
