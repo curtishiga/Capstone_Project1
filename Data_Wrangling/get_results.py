@@ -8,7 +8,6 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
 
 
 # Read the downloaded .csv file into a Pandas DataFrame
@@ -42,7 +41,6 @@ county_items = county_list.find_all('li')
 # store them
 counties = [county.contents[0] for county in county_items]
     
-
 ### Use the newly created list to extract those counties from df['CountyNames']
 bayarea_zip = ca_zip[ca_zip['CountyName'].isin(counties)]
 
@@ -68,6 +66,10 @@ zip_dates.columns = pd.to_datetime(zip_dates.columns)
 
 # Pivot by_zip to swap index and column names
 by_zip = zip_dates.transpose()
+
+# Fill NA values with 0 since its likely that there was no data to report for
+# developing areas
+by_zip.fillna(0)
 
 # Export zip_by_date to a csv file
 by_zip.to_csv('by_zip.csv')
