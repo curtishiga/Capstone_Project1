@@ -5,20 +5,37 @@ import matplotlib.pyplot as plt
 
 
 # import by_zip and transform it
-by_zip = pd.read_csv('by_zip.csv',
-                     parse_dates = True,
-                     header = [0, 1],
-                     index_col = 0)
+full = pd.read_csv('Zip_Zhvi_AllHomes.csv',
+                   parse_dates = True)
 
 
-reset = by_zip.reset_column()
+del full['RegionID'], full['SizeRank'], full['Metro'], full['City']
+
+# full = full.set_index(['State', 'CountyName', 'RegionName'])
+
+#full.index.name = 'Date'
+#
+#full = full.reset_index()
+#
+grouped = full.groupby('CountyName').mean().transpose()
+grouped = grouped.iloc[1:,:]
+grouped.index = pd.to_datetime(grouped.index)
 
 # create a list of bay area counties
 bayarea_counties = ['Alameda', 'Contra Costa', 'Marin', 'Napa',
                     'San Francisco', 'San Mateo', 'Santa Clara',
                     'Solano', 'Sonoma']
+i = 1
+while i <= len(bayarea_counties):
+    plt.subplot(3, 3, i)
+    plt.plot(grouped[bayarea_counties[i-1]], label = bayarea_counties[i-1])
+    i += 1
+plt.axis([1996,2019,0,2000000])    
+plt.show()    
+        
 
-
+bayarea = grouped[bayarea_counties]
+bayarea['bay'] = bayarea.mean(axis=1)
 
 
 ## import full zillow research data
