@@ -18,6 +18,7 @@ df = pd.read_csv('Zip_Zhvi_AllHomes.csv', parse_dates=True)
 # redundancies when extracting the CountyName
 ca_zip = df[df['State'] == 'CA']
 
+
 ### Create a list of Bay Area counties and use to extract them from CountyName
 # Assign URL to a variable
 url = 'https://mtc.ca.gov/about-mtc/what-mtc/nine-bay-area-counties'
@@ -40,21 +41,20 @@ county_items = county_list.find_all('li')
 # Initialize a list to which extract the county names from HTML format and
 # store them
 counties = [county.contents[0] for county in county_items]
+
     
 ### Use the newly created list to extract those counties from df['CountyNames']
 bayarea_zip = ca_zip[ca_zip['CountyName'].isin(counties)]
-
 
 ### Remove unnecessary columns like RegionID, SizeRank, State
 del bayarea_zip['RegionID'], bayarea_zip['SizeRank'], bayarea_zip['State']
 
 # Set the index to be the zip codes
-bayarea_zip = bayarea_zip.set_index('RegionName')
-
+bayarea_zip = bayarea_zip.set_index(['CountyName', 'RegionName']).sort_index()
 
 # Create a new Data Frame that only contain columns City:CountyName and export
 # to zip_id.csv to possible use for later analysis
-zip_id = bayarea_zip.loc[:,'City':'CountyName']
+zip_id = bayarea_zip.loc[:,'City':'Metro']
 zip_id.to_csv('zip_id.csv')
 
 
