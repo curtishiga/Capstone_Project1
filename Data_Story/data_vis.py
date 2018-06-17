@@ -39,14 +39,30 @@ bayarea = grouped[bayarea_counties]
 bayarea['bay'] = bayarea.mean(axis=1)
 
 
-sns.stripplot(data = grouped.loc['2018-04',:].transpose())
-sns.stripplot(data = bayarea.loc['2018-04',:].transpose(), color = 'red')
+#sns.stripplot(data = grouped.loc['2018-04',:].transpose())
+#sns.stripplot(data = bayarea.loc['2018-04',:].transpose(), color = 'red')
 
 # import price per square foot of all zips in u.s.
-price_per_sqft = pd.read_csv('Zip_MedianListingPricePerSqft_AllHomes.csv')
+ppsqft = pd.read_csv('Zip_MedianListingPricePerSqft_AllHomes.csv')
+
+del ppsqft['SizeRank'], ppsqft['Metro'], ppsqft['City']
+
+ppsqft_grouped = ppsqft.groupby('CountyName').mean().transpose()
+ppsqft_grouped = ppsqft_grouped.iloc[1:,:]
+ppsqft_grouped.index = pd.to_datetime(ppsqft_grouped.index)
 
 
-sns.tsplot(bayarea['Santa Clara'])
+pct_change = pd.concat([grouped['2010-01'], grouped['2018-04']]).transpose()
+
+pct_change['change'] = (pct_change.iloc[:,1] - pct_change.iloc[:,0])/(pct_change.iloc[:,0])
+
+sns.swarmplot(pct_change['change'], orient = 'v')
+sns.swarmplot(pct_change['change'][bayarea_counties], orient = 'v', color = 'red')
+
+
+gt = grouped.transpose()
+ppsf_gt = ppsqft_grouped.transpose()
+
 ## add column to price_per_sqft indicating which zips are in the bay area
 ##price_per_sqft['in_bayarea'] = price_per_sqft['CountyName'].isin(bayarea_counties)
 #
