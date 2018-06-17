@@ -56,6 +56,11 @@ pct_change = pd.concat([grouped['2010-01'], grouped['2018-04']]).transpose()
 
 pct_change['change'] = (pct_change.iloc[:,1] - pct_change.iloc[:,0])/(pct_change.iloc[:,0])
 
+
+ppsqft_pct_change = pd.concat([ppsqft_grouped['2010-01'], ppsqft_grouped['2018-04']]).transpose()
+
+ppsqft_pct_change['change'] = (ppsqft_pct_change.iloc[:,1] - ppsqft_pct_change.iloc[:,0])/(ppsqft_pct_change.iloc[:,0])
+
 sns.swarmplot(pct_change['change'], orient = 'v')
 sns.swarmplot(pct_change['change'][bayarea_counties], orient = 'v', color = 'red')
 
