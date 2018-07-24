@@ -24,15 +24,12 @@ Alameda,94587,Union City,San Francisco
 Alameda,94588,Pleasanton,San Francisco
 Alameda,94601,Oakland,San Francisco
 Alameda,94602,Oakland,San Francisco
-Alameda,94603,Oakland,San Francisco
 Alameda,94605,Oakland,San Francisco
 Alameda,94606,Oakland,San Francisco
-Alameda,94607,Oakland,San Francisco
 Alameda,94608,Oakland,San Francisco
 Alameda,94609,Oakland,San Francisco
 Alameda,94610,Oakland,San Francisco
 Alameda,94611,Oakland,San Francisco
-Alameda,94612,Oakland,San Francisco
 Alameda,94618,Oakland,San Francisco
 Alameda,94619,Oakland,San Francisco
 Alameda,94621,Oakland,San Francisco
@@ -74,6 +71,7 @@ Contra Costa,94595,Walnut Creek,San Francisco
 Contra Costa,94596,Walnut Creek,San Francisco
 Contra Costa,94597,Walnut Creek,San Francisco
 Contra Costa,94598,Walnut Creek,San Francisco
+Contra Costa,94801,Richmond,San Francisco
 Contra Costa,94803,El Sobrante,San Francisco
 Contra Costa,94804,Richmond,San Francisco
 Contra Costa,94805,Richmond,San Francisco
@@ -100,14 +98,10 @@ Napa,94558,Napa,Napa
 Napa,94559,Napa,Napa
 Napa,94574,Saint Helena,Napa
 Napa,94599,Yountville,Napa
-San Francisco,94102,San Francisco,San Francisco
 San Francisco,94103,San Francisco,San Francisco
-San Francisco,94105,San Francisco,San Francisco
 San Francisco,94107,San Francisco,San Francisco
-San Francisco,94108,San Francisco,San Francisco
 San Francisco,94109,San Francisco,San Francisco
 San Francisco,94110,San Francisco,San Francisco
-San Francisco,94111,San Francisco,San Francisco
 San Francisco,94112,San Francisco,San Francisco
 San Francisco,94114,San Francisco,San Francisco
 San Francisco,94115,San Francisco,San Francisco
@@ -123,7 +117,6 @@ San Francisco,94131,San Francisco,San Francisco
 San Francisco,94132,San Francisco,San Francisco
 San Francisco,94133,San Francisco,San Francisco
 San Francisco,94134,San Francisco,San Francisco
-San Francisco,94158,San Francisco,San Francisco
 San Mateo,94002,Belmont,San Francisco
 San Mateo,94005,Brisbane,San Francisco
 San Mateo,94010,Burlingame,San Francisco
@@ -231,6 +224,7 @@ Sonoma,95441,Geyserville,Santa Rosa
 Sonoma,95442,Glen Ellen,Santa Rosa
 Sonoma,95446,Guerneville,Santa Rosa
 Sonoma,95448,Healdsburg,Santa Rosa
+Sonoma,95452,Kenwood,Santa Rosa
 Sonoma,95462,Monte Rio,Santa Rosa
 Sonoma,95465,Occidental,Santa Rosa
 Sonoma,95472,Sebastopol,Santa Rosa
