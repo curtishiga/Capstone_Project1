@@ -6,7 +6,7 @@ import seaborn as sns
 
 
 # import by_zip and transform it
-full = pd.read_csv('Zip_Zhvi_AllHomes.csv',
+full = pd.read_csv('C:\\Users\\Curtis\\Desktop\\Springboard\\Capstone_Project1\\data\\Zip_Zhvi_AllHomes.csv',
                    parse_dates = True)
 
 

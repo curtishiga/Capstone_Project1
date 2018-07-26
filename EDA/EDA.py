@@ -7,7 +7,7 @@ from itertools import combinations
 
 
 # import by_zip and transform it
-df = pd.read_csv('Zip_Zhvi_AllHomes.csv',
+df = pd.read_csv('C:\\Users\\Curtis\\Desktop\\Springboard\\Capstone_Project1\\data\\Zip_Zhvi_AllHomes.csv',
                    parse_dates = True)
 df = df.fillna(0)
 df = df.set_index('RegionName')
@@ -69,7 +69,7 @@ us_pc = us_pc[us_pc['change'] != float('inf')]
 
 
 # Plot distribution of Bay Area percent change
-_ = plt.hist(ba_pc['change'])
+_ = plt.hist(ba_pc['change'], bins = 10)
 _ = plt.title('Distribution of Percent Change of Bay Area (2010-2018)')
 _ = plt.xlabel('Percent Change (%)')
 _ = plt.ylabel('Count')

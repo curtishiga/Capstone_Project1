@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 
 
 # Read the downloaded .csv file into a Pandas DataFrame
-df = pd.read_csv('Zip_Zhvi_AllHomes.csv', parse_dates=True)
+df = pd.read_csv('C:\\Users\\Curtis\\Desktop\\Springboard\\Capstone_Project1\\data\\Zip_Zhvi_AllHomes.csv', parse_dates=True)
 
 # RegionName is used to list which zip code for each region
 # Extract only the zip codes in 'CA' to narrow the list and reduce any
