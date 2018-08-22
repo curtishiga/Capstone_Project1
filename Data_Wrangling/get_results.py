@@ -59,13 +59,10 @@ zip_id.to_csv('zip_id.csv')
 
 
 # Create a new Data Frame that only contain the price by month
-zip_dates = bayarea_zip.loc[:,'1996-04':]
+by_zip = bayarea_zip.loc[:,'1996-04':]
 
 # Convert the column names in zip_dates to datetime objects
-zip_dates.columns = pd.to_datetime(zip_dates.columns)
-
-# Pivot by_zip to swap index and column names
-by_zip = zip_dates.transpose()
+by_zip.columns = pd.to_datetime(by_zip.columns)
 
 # NaN values seem to be found where areas were being developed and likely there
 # was no data to report.
