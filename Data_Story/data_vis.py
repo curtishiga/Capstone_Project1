@@ -5,7 +5,7 @@ import seaborn as sns
 
 
 # import by_zip and transform it
-full = pd.read_csv('C:\\Users\\Curtis\\Desktop\\Springboard\\Capstone_Project1\\data\\Zip_Zhvi_AllHomes.csv',
+full = pd.read_csv('../data/Zip_Zhvi_AllHomes.csv',
                    parse_dates = True)
 
 del full['RegionID'], full['SizeRank'], full['Metro'], full['City']
@@ -35,7 +35,7 @@ sns.stripplot(data = grouped.loc[:,'2018-04-01'])
 sns.stripplot(data = bayarea.loc[:,'2018-04-01'], color = 'red')
 
 # import price per square foot of all zips in u.s.
-ppsqft = pd.read_csv('C:\\Users\\Curtis\\Desktop\\Springboard\\Capstone_Project1\\data\\Zip_MedianListingPricePerSqft_AllHomes.csv')
+ppsqft = pd.read_csv('../data/Zip_MedianListingPricePerSqft_AllHomes.csv')
 
 del ppsqft['SizeRank'], ppsqft['Metro'], ppsqft['City']
 

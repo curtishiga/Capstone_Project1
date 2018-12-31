@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 
 
 # Read the downloaded .csv file into a Pandas DataFrame
-df = pd.read_csv('C:\\Users\\Curtis\\Desktop\\Springboard\\Capstone_Project1\\data\\Zip_Zhvi_AllHomes.csv',
+df = pd.read_csv('../data/Zip_Zhvi_AllHomes.csv',
                  parse_dates=True)
 
 # RegionName is used to list which zip code for each region
@@ -56,7 +56,7 @@ bayarea_zip = bayarea_zip.set_index(['CountyName', 'RegionName']).sort_index()
 # Create a new Data Frame that only contain columns City:CountyName and export
 # to zip_id.csv to possible use for later analysis
 zip_id = bayarea_zip.loc[:,'City':'Metro']
-zip_id.to_csv('zip_id.csv')
+zip_id.to_csv('../data/zip_id.csv')
 
 
 # Create a new Data Frame that only contain the price by month
@@ -71,4 +71,4 @@ by_zip.columns = pd.to_datetime(by_zip.columns)
 # by_zip.fillna(0)
 
 # Export zip_by_date to a csv file
-by_zip.to_csv('by_zip.csv')
+by_zip.to_csv('../data/by_zip.csv')

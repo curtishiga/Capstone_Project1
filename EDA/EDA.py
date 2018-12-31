@@ -7,7 +7,7 @@ from itertools import combinations
 
 
 # import by_zip and transform it
-df = pd.read_csv('C:\\Users\\Curtis\\Desktop\\Springboard\\Capstone_Project1\\data\\Zip_Zhvi_AllHomes.csv',
+df = pd.read_csv('../data/Zip_Zhvi_AllHomes.csv',
                    parse_dates = True)
 df = df.fillna(0)
 df = df.set_index('RegionName')
